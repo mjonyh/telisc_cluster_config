@@ -1,0 +1,26 @@
+1. Use ZFS
+  a) 320 GB for root filesystem (1 HDD)
+  b) 500 GB for HOME and 500 GB for CLUSTERAPPS (1 HDD)
+
+2. System packages:
+  a) Slurm
+  b) NHC
+  c) TSSH (done)
+
+3. Include libraries:
+  a) openBlas
+  b) FFTW (3.3.7 and 2.1.5)
+  c) openMPI (1*, 2* and 3*)
+  d) lapack / scalapack
+  e) CUDA
+  f) mpi4py (2 and 3)
+  g) numpy (2 and 3)
+  h) scipy (2 and 3)
+  i) matplotlib (2 and 3)
+
+4. Include packages:
+  a) LAMMPS
+  b) R
+  c) Gromacs
+  d) WRF
+
