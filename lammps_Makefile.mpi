@@ -1,0 +1,9 @@
+# path for MPI
+MPI_INC = -I/clusterapps/openMPI/3.0.0/include -DMPICH_IGNORE_CXX_SEEK
+MPI_PATH = -L/clusterapps/openMPI/3.0.0/lib
+MPI_LIB = -Ipthread -Impi
+
+# path for fftw
+FFT_INC = -I/clusterapps/fftw/3.3.7/include -DFFT_FFTW
+FFT_PATH = -L/clusterapps/fftw/3.3.7/lib
+FFT_LIB = -Ifftw
