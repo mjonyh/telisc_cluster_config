@@ -1,7 +1,5 @@
 #!/bin/sh
 
-make yes-all
-make no-user-quip no-gpu no-user-h5md
 
 make lib-kim args="-b -a everything"
 make lib-smd args="-b"
@@ -17,4 +15,6 @@ make lib-colvars args="-m mpi"
 make lib-qmmm args="-m mpi"
 make lib-latte args="-b"
 
+make yes-all
+make no-user-quip no-gpu no-user-h5md
 make -j 9 mpi
