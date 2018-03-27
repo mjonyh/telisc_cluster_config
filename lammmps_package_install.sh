@@ -1,5 +1,6 @@
 #!/bin/sh
 
+make -j 9 mpi
 
 make lib-kim args="-b -a everything"
 make lib-smd args="-b"
