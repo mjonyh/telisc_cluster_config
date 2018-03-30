@@ -6,7 +6,7 @@ Basic components:
 - Slurm:    Standard HPC workload manager and job scheduler.
 - Lmod:     Environment controller for the modules, apps etc.
 
-* How to use Gateone:
+* How to login:
     - 1. url: https://10.100.11.71:443 in a web browser. (Firefox, Google
       Chrome, Explorer and Microsoft Edge are seem to work fine.)
     - 2. Enter IP address: 10.100.11.71
@@ -15,4 +15,73 @@ Basic components:
     - 5. Enter PASSWORD
 And you got logged into the YZ-HPC System.
 
+* How to use Gaussian (g09):
+    - Overview:
+    - Single-Node Single-CPU Gaussian job
+        - Gaussian input file
+        - Slurm job script
+        - Slurm job submission
+        - Output log file
 
+    - Single-Node Multi-CPU Gaussian job
+        - Gaussian input file
+        - Slurm job script
+        - Slurm job submission
+        - Output log file
+    
+    - Multi-Node Multi-CPU Gaussian job
+        - Gaussian input file
+        - Slurm job script
+        - Slurm job submission
+        - Output log file
+
+    - Useful Links
+        - Gaussian Documentation
+        - Slurm Documentation
+        - Lmod Documentation
+
+* How to use LAMMPS:
+    - Overview 
+    - LAMMPS input file 
+    - Single-Node Single-CPU LAMMPS job
+        - Slurm job script
+        - Batch job submission 
+        - Output file
+    
+    - Single-Node Multi-CPU LAMMPS job
+        - Slurm job script
+        - Batch job submission 
+        - Output file 
+    
+    - Multi-Node Multi-CPU LAMMPS job
+        - Slurm job script
+        - Batch job submission 
+        - Output file 
+
+    - Useful Links
+        - LAMMPS Documentation
+        - Slurm Documentation
+        - Lmod Documentation
+
+* How to use OpenMPI (2.1.3 and 3.0.0):
+    - Overview
+    - Sample C-Source Code
+    - Compiling
+    - Running MPI in batch
+    - Useful Links
+        - OpenMPI Documentation
+        - Slurm Documentation
+        - Lmod Documentation
+        - Vim Documentation
+        - Nano Documentation
+
+* How to use MPI4py (python 2.7.* and 3.6.*):
+    - Overview
+    - Sample Python-Source Code
+    - Running MPI4py in batch
+    - Useful Links
+        - MPI4py Documentation
+        - Slurm Documentation
+        - Lmod Documentation
+        - Vim Documentation
+        - Nano Documentation
