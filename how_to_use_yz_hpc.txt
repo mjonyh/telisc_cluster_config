@@ -1,0 +1,18 @@
+How to use YZ HPC
+=================
+
+Basic components:
+- Gateone:  This package allows SSH access through web browser.
+- Slurm:    Standard HPC workload manager and job scheduler.
+- Lmod:     Environment controller for the modules, apps etc.
+
+* How to use Gateone:
+    - 1. url: https://10.100.11.71:443 in a web browser. (Firefox, Google
+      Chrome, Explorer and Microsoft Edge are seem to work fine.)
+    - 2. Enter IP address: 10.100.11.71
+    - 3. Enter Port: 22
+    - 4. Enter USERNAME
+    - 5. Enter PASSWORD
+And you got logged into the YZ-HPC System.
+
+
