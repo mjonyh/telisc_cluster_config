@@ -1,0 +1,30 @@
+For example, \emph{this very paragraph} appears in the file \texttt{included.tex}, and
+	was included using a normal \texttt{\textbackslash{}input} command.
+
+The file includes a simple Java program:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\JAVA
+public class Hello {
+	/**
+	 * main: the program's starting point.
+	 * @param args the arguments passed on the command-line.
+	 * @author every Jave programmer.
+	 */
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+	}
+}
+\END\PROGj{}
+\end{minipage}%
+}
+
+~
+
+Note how @-keywords in \texttt{javadoc} comments appear in boldface.
+
+(The file \texttt{included.tex} ends here.)
+

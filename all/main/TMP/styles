@@ -1,0 +1,15 @@
+article 11pt,
+geometry paper=a4paper,dvips,top=1.5cm,left=1.5cm,right=1.5cm,    foot=1cm,bottom=1.5cm
+times 
+amsmath fleqn
+amsfonts 
+amssymb 
+amsthm 
+amsopn 
+xspace 
+array 
+epsfig 
+listings 
+labels 
+equation 
+prog2tex 

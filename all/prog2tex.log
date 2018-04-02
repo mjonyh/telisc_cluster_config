@@ -1,0 +1,176 @@
+This is TeX--XeT, Version 3.14159--1.1 (C version 6.1) (format=latex 95.12.27)  13 NOV 2002 15:20
+**prog2tex
+(prog2tex.tex
+LaTeX2e <1995/12/01>
+Hyphenation patterns for english, german, loaded.
+(/usr/local/lib/texmf/tex/latex2e/base/article.cls
+Document Class: article 1995/11/30 v1.3p Standard LaTeX document class
+(/usr/local/lib/texmf/tex/latex2e/base/size12.clo
+File: size12.clo 1995/11/30 v1.3p Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (prog2tex.sty
+Package: prog2tex 2000/04/20 Include C++ files in LaTeX2e
+ (prog2tex.prg) (/usr/local/lib/texmf/tex/latex2e/psnfss/times.sty
+Package: times 1995/08/07 5.1 Times PSNFSS2e package
+)
+(/usr/local/lib/texmf/tex/latex2e/base/ifthen.sty
+Package: ifthen 1995/04/25 v1.0k Standard LaTeX ifthen package (DPC)
+))
+(/home/yogi/TeX/geometry.sty
+Package: geometry 1999/10/07 v2.2 Page Geometry
+
+(/usr/local/lib/texmf/tex/latex2e/graphics/keyval.sty
+Package: keyval 1994/09/12 v1.08 key=value parser (DPC)
+)
+\geom@cnth=\count87
+\geom@cntv=\count88
+
+(/usr/local/lib/texmf/tex/latex2e/config/geometry.cfg)) (prog2tex.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 11.
+
+(/usr/local/lib/texmf/tex/latex2e/psnfss/OT1ptm.fd
+File: OT1ptm.fd 1995/08/12 Fontinst v1.335 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 12.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 15.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 45.
+
+(/usr/local/lib/texmf/tex/latex2e/psnfss/OT1pcr.fd
+File: OT1pcr.fd 1995/08/12 Fontinst v1.335 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 59.
+
+(/usr/local/lib/texmf/tex/latex2e/psnfss/OMSpcr.fd
+File: OMSpcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/sc' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 67.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 67.
+ [1
+
+]
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <12> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 89.
+
+Overfull \hbox (12.05481pt too wide) in paragraph at lines 83--93
+[][]\OT1/ptm/m/n/12 Before run-ning \OT1/pcr/m/n/12 latex2e \OT1/ptm/m/n/12 on 
+the doc-u-ment, run \OT1/pcr/m/n/12 prog2tex\OT1/ptm/m/n/12 . This is done us-i
+ng the syn-tax ``\OT1/pcr/m/n/12 prog2tex
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
+
+ []
+
+
+Underfull \vbox (badness 2393) has occurred while \output is active []
+
+ [2]
+LaTeX Font Info:    Try loading font information for OML+pcr on input line 184.
+
+
+(/usr/local/lib/texmf/tex/latex2e/psnfss/OMLpcr.fd
+File: OMLpcr.fd 
+)
+LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 184.
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 184.
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 184.
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 184.
+LaTeX Font Info:    Font shape `OMS/pcr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 184.
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]\OT1/pcr/m/n/12 Constructors in Java must begin with calls to either
+ []
+
+[3]
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 276.
+
+ (/usr/local/lib/texmf/tex/latex2e/psnfss/OT1phv.fd
+File: OT1phv.fd 1995/08/12 Fontinst v1.335 font definitions for OT1/phv.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 276.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 276.
+
+
+(/usr/local/lib/texmf/tex/latex2e/psnfss/OMSphv.fd
+File: OMSphv.fd 
+)
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 276.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 276.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+[5] (included.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6])
+[7] [8] [9] (prog2tex.aux) ) 
+Here is how much of TeX's memory you used:
+ 940 strings out of 10903
+ 10952 string characters out of 72932
+ 129727 words of memory out of 262141
+ 3806 multiletter control sequences out of 9500
+ 22343 words of font info for 60 fonts, out of 100000 for 255
+ 14 hyphenation exceptions out of 607
+ 22i,8n,21p,471b,331s stack positions out of 300i,40n,60p,3000b,4000s
+
+Output written on prog2tex.dvi (9 pages, 27704 bytes).

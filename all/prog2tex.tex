@@ -1,0 +1,636 @@
+\documentclass[twoside,12pt]{article}
+
+\usepackage{prog2tex}
+\usepackage[paper=a4paper,dvips,top=1.5cm,left=1.5cm,right=1.5cm,foot=1cm,bottom=1.5cm]{geometry}
+
+\newcommand{\bs}{\textbackslash}
+
+\title{\progtex{} v2.0 Documentation}
+\author{Tal Cohen}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\progtex{} is a software tool that allows the inclusion of C++, Java and BNF (Jamoos)
+    programs in \LaTeX{} documents.
+Short program excerpts, whole program files or selected ranges from program files can
+    all be added, as well as small program expressions as part of the flowing text.
+\end{abstract}
+
+\section{Introduction}
+
+This is a brief documentation of the \progtex{} utility, as well
+    being a test document (as it uses practically all of
+    \progtex{}'s features).
+Also included is a technical discussion of the changes made
+    since the program's last version.
+
+\progtex{} allows the inclusion of C++, Java, and BNF (Jamoos) programs in
+    \LaTeX{} documents.
+Source code written in any of these languages can be
+    included in one of four ways:
+
+\begin{enumerate}
+
+\item{\textbf{Code paragraphs}} inside the \LaTeX{} document. This method can
+    be used to include blocks of source code directly inside the
+    \LaTeX{} document.
+
+\item{\textbf{Inlined code}} inside the \LaTeX{} text, useful for quoting a small
+    fragment of code (e.g., a single statement or expression) without breaking
+    the flow of reading.
+
+\item{\textbf{Included files}} allows the inclusion of source code directly from
+    source files (e.g., \texttt{.java}, \texttt{.h} or \texttt{.cpp}
+    files).
+
+\item{\textbf{Included file range}} enables the inclusion of only a limited part (a
+    \emph{named range}) from a source file.
+The named ranges must be defined in the source file itself (using special
+    delimiters that would seem like comments to the compiler).
+
+\end{enumerate}
+
+\paragraph{Outline} The next section explains how \progtex{} should be run.
+Sections~\ref{Section:Code:Paragraphs} to~\ref{Section:Included:File:Ranges}
+    detail the exact syntax for each of the four source-inclusion modes.
+Section~\ref{Section:Including:Latex:Files} deals with using \LaTeX{}'s normal
+    file inclusion commands (\texttt{\bs{}include} and \texttt{\bs{}input}).
+Section~\ref{Section:Using:Latex:Notation} describes how \LaTeX{} formatting
+    commands can be added to comments in source code.
+Both Section~\ref{Section:Technical:Notes}, which contains technical notes, and
+    Section~\ref{Section:Future:Changes}, are aimed for future maintainers of
+    \progtex{}, and would be of no interest to most users.
+Finally, Section~\ref{Section:Conclusion} is a brief conclusion.
+
+\section{Using \progtex{}}
+
+To include source code in \LaTeX{} documents, the following steps should
+    be taken:
+
+\begin{enumerate}
+
+\item Add \texttt{\bs{}usepackage\{prog2tex\}} to the document's
+    preamble.
+
+\item Use \progtex{}'s commands in your document.
+\progtex{}'s commands include the various source-inclusion macros (detailed in the
+    following sections), as well as the
+    \texttt{\bs{}progtex} macro, used to generate
+    \progtex{}'s ``logo''.
+
+\item Before running \texttt{latex2e} on the document, run
+    \texttt{prog2tex}.
+This is done using the syntax ``\texttt{prog2tex} \textit{filename}''. If
+    the \textit{filename} does not include an extension, the default
+    ``\texttt{.tex}'' extension is assumed.
+\texttt{prog2tex} modifies the \texttt{.tex} file by adding special macros
+    (``\texttt{\bs{}PROG\textit{xx}}'' macros) that can be
+    ignored (or even deleted) when the document is edited again.
+The program also creates an additional input file that the package uses (with a
+    \texttt{.prg} extension).
+
+\item You can now run \texttt{latex2e} normally on the document.
+
+\end{enumerate}
+
+If the source document is modified, \texttt{prog2tex} should be run again
+    before each time \texttt{latex2e} is used.
+Only one execution of \texttt{prog2tex} is needed every time the file is
+    modified, even if you run \texttt{latex2e} several times.
+
+By default, \texttt{prog2tex} updates the \texttt{.tex} file on which it
+    operates.
+If a second command-line argument is provided, \texttt{prog2tex} will generate a new
+    output file (leaving the input file untouched). For example:
+    ``\texttt{prog2tex} \textit{filename} \textit{outputfile}''.
+Note, however, that if the input \texttt{.tex} file uses the \LaTeX{}
+    macros \texttt{\bs{}input} or
+    \texttt{\bs{}include}, the included files \emph{will}
+    be updated even if a second argument was specified (see
+    Section~\ref{Section:Including:Latex:Files} for details).
+
+If \texttt{prog2tex} is run without any arguments, it will use \emph{stdin}
+    for input and \emph{stdout} for output.
+In addition, it will create a file called \texttt{stdin.prg} where the
+    generated macros will be stored.
+
+\section{Code Paragraphs}
+\label{Section:Code:Paragraphs}
+
+To enter source code directly inside your \LaTeX{} document, use the
+    following syntax:
+
+~
+
+\texttt{\bs{}}\textit{lang}
+
+\textit{source code}
+
+\texttt{\bs{}END}
+
+~
+
+Where ``\texttt{\bs{}}\textit{lang}'' is one of ``\texttt{\bs{}BNF}'',
+    ``\texttt{\bs{}CPP}'' or ``\texttt{\bs{}JAVA}'', for BNF,
+    C/C++, or Java code, respectively.
+
+For example, consider the following \LaTeX{} source:
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{%
+\bs{}CPP \\%
+// hello.c \\%
+\\%
+\#include $<$stdio.h$>$ \\%
+\\%
+int main(int argc, char \*argv[]) \\%
+\{ \\%
+\mbox{ }\mbox{ }\mbox{ }// just print\ldots \\%
+\mbox{ }\mbox{ }\mbox{ }printf("Hello, World!\bs{}n"); \\%
+\mbox{ }\mbox{ }\mbox{ }\\%
+\mbox{ }\mbox{ }\mbox{ }return 0;\\%
+\} \\%
+\bs{}END
+}%
+\end{minipage}%
+}
+
+~
+
+Once processed by \progtex{} and \LaTeX{}, it will produce the following
+    result:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\CPP
+// hello.c
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    // just print...
+    printf("Hello, World!\n");
+
+    return 0;
+}
+\END\PROGb{}
+\end{minipage}
+}
+
+~
+
+Note that keywords appear in \textbf{boldface}, and comments appear
+    in a proportional font.
+(The way various language parts are rendered can in fact be changed by
+    updating the file \texttt{prog2tex.sty}, without otherwise
+    modifying \progtex{}'s source code.)
+
+\section{Inlined Code}
+
+Sometimes, a small piece of code has to be included directly inside
+    normal text.
+\progtex{} supports this by using ``inline'' code macros.
+
+The three inline macros are \texttt{\bs{}bnf}, \texttt{\bs{}cpp},
+    and \texttt{\bs{}java}, for inlining BNF, C/C++, or Java code
+    fragments, respectively.
+
+Any text passed as a parameter to these macros will be processed to generate
+    properly formatted source code (e.g., keywords will appear in bold, etc.).
+
+For example, consider the following \LaTeX{} paragraph:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{%
+Constructors in Java must begin with calls to either \bs{}java\{this(\ldots)\}
+    or \bs{}java\{super(\ldots)\}.
+}%
+\end{minipage}%
+}
+
+~
+
+It will yield:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+Constructors in Java must begin with calls to either \java{this(...)}\PROGc{}
+    or \java{super(...)}\PROGd{}.
+\end{minipage}%
+}
+
+~
+
+The characters `\texttt{\{}' and `\texttt{\}}' need not (and cannot)
+    be escaped inside inlined macros.
+This means that the text included inside the inline macro must not contain
+    unbalanced curly braces.
+For example, the following code will baffle \progtex, and cause unexpected
+    results:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{%
+You must avoid bad usage of \bs{}java\{switch \{\} in your programs.
+}%
+\end{minipage}%
+}
+
+~
+
+Inlined C/C++ code fragments can appear inside BNF code paragraphs,
+    and vice versa.
+The nesting can be repeated to any depth necessary.
+For example, the following block of code is a BNF program that includes
+    inlined C++ code, generated using ``\texttt{\bs{}cpp\{\ldots\}}'',
+    inside a ``\texttt{\bs{}BNF\ldots{}\bs{}END}'' block:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\BNF
+    Main? -> argv: { STRING ... }+
+    FEATURES
+        p: PascalProgram? := PARSE(argv[\cpp{1}],PascalProgram);
+        is_legal:OK := [[ \cpp{if (!\bnf{$p?}) \bnf{ERROR};} ]];
+        triples:TriplesList := p.triples();
+        optimized:TriplesList := triples.optimize();
+        generate:OK := optimized.dump();
+    END;
+\END\PROGe{}
+\end{minipage}%
+}
+
+~
+
+(Note that the framebox is not automatically generated as well; it was included here,
+    and in other examples, to increase this document's readability.)
+
+\section{Included Files}
+
+Not all source code has to reside inside the \LaTeX{} document.
+Source files can be included directly, using the macros
+    \texttt{\bs{}cppfile},
+    \texttt{\bs{}bnffile} and
+    \texttt{\bs{}javafile} (all-uppercase
+    versions of these macros are also defined, e.g.,
+    \texttt{\bs{}CPPFILE}).
+
+These macros accept a single parameter, which is the filename to
+    include.
+If the file is not found, \progtex{} will try again, appending
+    an extension to the name.
+The extension used is \texttt{.cpp}, \texttt{.bnf} or
+    \texttt{.java}, depending on the macro at hand.
+
+As an example, here's the complete content of the file
+    \texttt{sample.cpp}, included using the command
+    ``\texttt{\bs{}cppfile\{sample\}}''. Again, the framebox
+    was added here for increased readability.
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\cppfile{sample}\PROGf{}
+\end{minipage}%
+}
+
+~
+
+This file includes several named ranges, which will be used
+    in the following section.
+
+\section{Included File Ranges}
+\label{Section:Included:File:Ranges}
+
+Using \emph{named ranges}, \progtex{} supports the inclusion of
+    selected parts from a source file (rather than including
+    the entire file).
+
+The beginning of a range inside a source file is marked using
+    the string
+
+\texttt{/*-\texttt{}-begin:}\textit{rangename}\texttt{-\texttt{}-*/}
+
+The compiler will naturally consider this marker to be a comment, and
+    ignore it.
+In a similar manner, the end of a range is marked using the string
+
+\texttt{/*-\texttt{}-end:}\textit{rangename}\texttt{-\texttt{}-*/}
+
+To include a range, use the syntax
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{\bs{}cppfile\{}\textit{filename}\texttt{:}\textit{rangename}\texttt{\}}
+\end{minipage}%
+}
+
+~
+
+(The same can be done using \texttt{\bs{}javafile} and
+    \texttt{\bs{}bnffile} as well.) For example, using the file \texttt{sample.cpp}
+    from the previous Section, the command
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{\bs{}cppfile\{sample:inter\}}
+\end{minipage}%
+}
+
+~
+
+will yield this output:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\cppfile{sample:inter}\PROGg{}
+\end{minipage}%
+}
+
+~
+
+Ranges can be nested, or even cross each other's borders.
+In fact, a range does not even have to be continuous: if the same range
+    name is used more than once, it is considered a single, non-continuous
+    range.
+For example, here is the range named ``\texttt{impl}'' from \texttt{sample.cpp}:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\cppfile{sample:impl}\PROGh{}\PROGi{}
+\end{minipage}%
+}
+
+~
+
+The range markers themselves are not considered part of the range, and
+    hence are not included in the \LaTeX{} document (though if a range
+    $R_1$ contains the markers for some range $R_2$ internally,
+    including range $R_1$ will show $R_2$'s markers, just as it would
+    show any other comment contained within the range).
+
+\section{Including \LaTeX{} Files}
+\label{Section:Including:Latex:Files}
+
+\LaTeX{} documents processed with \progtex{} can use the normal
+    file-inclusion commands \texttt{\bs{}include} and \texttt{\bs{}input}.
+In this case, \progtex{} will treat source code fragments found the included
+    \LaTeX{} files as well.
+
+\input{included}
+
+The included files are processed by \progtex{} individually, and are modified
+    if they include source fragments (code paragraphs, inlined code, included
+    source files or included ranges). As with the main file, the modifications
+    are limited to adding \texttt{\bs{}PROG\textit{xx}} macros that
+    can be ignored when the file is edited.
+
+Every run of \progtex{} generates a single macros (\texttt{.prg}) file, even if
+    the main \texttt{.tex} file includes numerous source files and/or other
+    \LaTeX{} files.
+
+\section{Using \LaTeX{} Notation in Source Code}
+\label{Section:Using:Latex:Notation}
+
+When writing a program that will eventually be included in a \LaTeX{} document,
+    you can include \LaTeX{} formatting commands in the program's comments.
+This is done using ``\texttt{//\{\}}'' for single-line comments in C, C++ or Java,
+    or ``\texttt{/*\{\}}'' for multi-line (block) comments (these are
+    closed using the normal ``\texttt{*/}'' pair).
+
+For example, consider the following \LaTeX{} code, containing a
+    Java code fragment:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\texttt{%
+\bs{}JAVA \\%
+\mbox{ }if (a[i] $>$ max) //\{\} i.e., \$a\_i\$ is the new maximum \\%
+\mbox{ }\mbox{ }\mbox{ }\mbox{ }return Math.pow(x, Math.PI); //\{\} return \$x\^{}\bs{}pi\$ \\%
+\bs{}END %
+}%
+\end{minipage}%
+}
+
+~
+
+And its result:
+
+~
+
+\framebox{%
+\begin{minipage}{0.9\textwidth}%
+\JAVA
+ if (a[i] > max) //{} i.e., $a_i$ is the new maximum
+    return Math.pow(x, Math.PI); //{} return $x^\pi$
+\END\PROGba{}
+\end{minipage}%
+}
+
+~
+
+All one-line comments (``\texttt{-\texttt{}-}'') in BNF code automatically
+    support \LaTeX{} formatting commands.
+
+\texttt{javadoc} comments cannot include \LaTeX{} formatting.
+
+\section{Technical Notes}
+\label{Section:Technical:Notes}
+
+This section provides a list of changes of note in \progtex{}'s source code
+    (mainly the file \texttt{prog2tex.l}) since the previous version.
+The previous version did not support inclusion (neither source code
+    inclusion or the processing of included \LaTeX{} files), though
+    the basic infrastructure for such support did exist.
+
+\begin{enumerate}
+
+\item
+The code was heavily retouched for uniform indentation, and detailed comments
+    was added.
+
+\item
+The \cpp{Buffer}\PROGbb{} construct had a problematic design and was improperly used.
+    It was simply removed, since only a single output (\texttt{.prg}) file
+    is generated anyway.
+
+\item
+Several elements (functions, flex start-conditions, etc.) were defined but never
+    used. These include \cpp{BID}\PROGbc{}, \cpp{VAR}\PROGbd{}, \cpp{BVAR}\PROGbe{}, \cpp{Language::begin_block()}\PROGbf{},
+    etc. They were all were removed.
+
+\item
+Several elements were renamed to more properly describe their usage (e.g., \cpp{d2a()}\PROGbg{} was
+    renamed to \cpp{PROG_macro_id()}\PROGbh{}; \cpp{PASS}\PROGbi{} mode was renamed \cpp{LATEX}\PROGbj{};
+    \cpp{CODE}\PROGca{} and \cpp{CODE1}\PROGcb{} were renamed \cpp{CPP}\PROGcc{} and \cpp{CPP1}\PROGcd{}; etc.).
+
+\item
+Since only a single macros file is generated, the file inclusion stack (\cpp{Includes}\PROGce{},
+    but see below) no longer keeps track of the macro output file.
+
+\item
+Added support for a default extension to included source files.
+
+\item
+Some functions (e.g., \cpp{process()}\PROGcf{} and \cpp{sprocess()}\PROGcg{}) were changed so they now
+    return a \cpp{bool}\PROGch{} value (instead of \cpp{int}\PROGci{}).
+
+\item
+Several global status variables (e.g., \cpp{line}\PROGcj{}, \cpp{pos}\PROGda{}, etc.) are now stored
+    per source file. To this end, they are now defined as fields in the
+    \cpp{FileState}\PROGdb{} class.
+
+\item
+The file inclusion stack (\cpp{Includes}\PROGdc{}) is now used for both \LaTeX{} and included
+    source files. This allows proper handling of both source code includes and
+    \LaTeX{} \texttt{\bs{}include} and \texttt{\bs{}insert}
+    commands. Even the main file is considered ``included'', and is
+    pushed onto this stack at program start. Hence, the class was renamed
+    \cpp{Sources}\PROGdd{} (since it is used even if not a single file is
+    \texttt{\bs{}include}'d).
+
+\end{enumerate}
+
+Several bugs in the original code were found and corrected.
+This includes ``active'' bugs, as well as ``dormant'' bugs in the incomplete
+    infrastructure for supporting file inclusion.
+
+Some (fixed) bugs of interest include:
+
+\begin{enumerate}
+
+\item
+The \cpp{main()}\PROGde{} function relied on a random non-zero initialization of a local
+    variable to work properly.
+That variable was actually not needed at all.
+
+\item
+If the processed \texttt{.tex} file was not in Unix's \texttt{pwd} (present working
+    directory), the temp file was generated in \texttt{pwd} but never deleted.
+Now the temp file is always created in the \texttt{.tex} file's directory, and
+    deleted (except in cases of abnormal termination).
+
+\item
+The initial state was reported (by the mode-tracking debug facilities) as \cpp{INITIAL}\PROGdf{},
+    regardless of any calls to \cpp{BEGIN}\PROGdg{} before \cpp{yylex()}\PROGdh{} starts.
+This was due to an improper initialization of the variable \cpp{state}\PROGdi{}, plus an
+    ``unintercepted'' call to \cpp{BEGIN}\PROGdj{} in \cpp{process()}\PROGea{}.
+
+\item
+The global variable \cpp{lang}\PROGeb{} (of type \cpp{Language *}\PROGec{}) was constantly assigned new
+    instances of \cpp{Cpp}\PROGed{}/\cpp{Bnf}\PROGee{}, with no cleanup.
+To fix this problem, three ``singleton''\footnote{These are simply three global
+variables, one per class. They do not actually follow the \textsc{Singleton} design pattern,
+even though such a change is possible.} instances of the \cpp{Cpp}\PROGef{}, \cpp{Bnf}\PROGeg{}, \cpp{Java}\PROGeh{}
+    classes are used.
+\cpp{lang}\PROGei{} is used to point to relevant instance instead of a new one each time.
+This is possible since the only member field of \cpp{Language}\PROGej{} is \cpp{name}\PROGfa{}, which does not
+    change during the object's lifecycle.
+
+\item
+If an included file ended abruptly (e.g., inside a comment), the parser would lose sync
+    and the state-stack would become meaningless.
+
+\item
+The line number report in the generated \texttt{.prg} file (stating from which line in
+    the file was the code fragment taken) generated incorrect numbering, and could not
+    support multiple input files.
+This was fixed, and the report format changed from ``\texttt{Line }\textit{n}'' to
+    ``\textit{filename}\texttt{:}\textit{n}'' (e.g., ``\texttt{test.tex:15}'').
+
+\item
+LaTeX-style support for block comments was not working, since whomever added the
+    \cpp{ALIGN}\PROGfb{} mode did it in a way that broke that support (specifically, when
+    returning from \cpp{ALIGN}\PROGfc{}, the code always returned to \cpp{COMMENT}\PROGfd{} mode,
+    never to \cpp{LATEX_COMMENT}\PROGfe{}).
+
+\item
+The \cpp{ALIGN}\PROGff{} mode caused loss of tab characters in the source file.
+
+\end{enumerate}
+
+\section{Future Changes}
+\label{Section:Future:Changes}
+
+``Plan to throw one away; you will, anyhow'' (Fredrick P. Brooks, Jr., \emph{The Mythical
+    Man-Month}).
+
+It is time to ``throw one away'' for this program; the current design has outlived its
+    usefulness, and if another major upgrade is needed, the best way to do it would be
+    a complete rewrite (in a programming language worthy of the name, if possible; in
+    other words, not in C/C++).
+
+Other than a complete rewrite, here are a few suggestions for improving the existing design:
+
+\begin{enumerate}
+
+\item
+The abstract \cpp{Language}\PROGfg{} class and its concrete language-specific subclasses is a good
+    idea, that came into use too late.
+Currently, it is used only for included files.
+However, there's no reason not to use it for any code fragment, of any type.
+
+\item
+The \cpp{Language}\PROGfh{} class can be put to additional uses other than those currently employed
+    (which are mainly opening and closing blocks in a language-specific manner).
+In particular, it can be used for detecting language keywords.
+This would allow adding support for new languages with significantly less hassle, since
+    the flex grammar need not be updated for the keywords of each new language.
+Instead, knowledge about the keywords will simply be stored in the new subclass of
+    \cpp{Language}\PROGfi{}.
+
+\item
+File inclusion is currently handled as a stack (the \cpp{Sources}\PROGfj{} variable, previously
+    called \cpp{Includes}\PROGga{}).
+It would be better to change this into a queue, with a mechanism that would prevent
+    duplicate entries.
+This change would have two direct advantages:
+(a) if a source file is included more than once, it will only be processed once, and
+(b) in the unlikely case that two \LaTeX{} files mutually include each other (technically
+    possible, since conditional \LaTeX{} commands can be used to prevent endless nesting),
+    the current design would reach an endless inclusion loop, whereas a
+    queue design would not.
+
+\item
+\progtex{} macros found inside \LaTeX{} comments are currently processed just like any
+    other.
+The program can be taught about \LaTeX{} comments so it would ignore them.
+
+\end{enumerate}
+
+\section{Conclusion}
+\label{Section:Conclusion}
+
+It still surprises me, considering their origin and authors, that while both
+    \TeX{} abd \LaTeX{} include built-in support for poetry and verse, neither includes
+    proper handling of source code inside documents.
+
+
+
+\end{document}
