@@ -17,5 +17,5 @@ make lib-qmmm args="-m mpi"
 make lib-latte args="-b"
 
 make yes-all
-make no-user-quip no-gpu no-user-h5md
+make no-user-quip no-gpu no-user-h5md no-latte no-voronoi no-user-vtk no-mscg
 make -j 9 mpi
