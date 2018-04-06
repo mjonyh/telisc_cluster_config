@@ -120,7 +120,7 @@ tested).
 \subsubsection{From web browser}
 
 \begin{description}
-    \item[url] https://10.100.11.71:443
+    \item[url] https://10.100.11.71
     \item[Permission] Accept the secure access
     \item[localhost] 10.100.11.71
     \item[Port] 22
@@ -141,6 +141,21 @@ the HPC system.
 
 \subsection{How many jobs can I run?}
 \subsection{Why are some of my jobs stuck in the queue?}
+
+\section{How do I use TextEditor}
+By default vim and nano text editor is provided in the YZ-HPC because of their
+simplicity.
+
+\subsection{Documentation on TextEditor}
+\begin{itemize}
+    \item Vim
+    \item Nano
+\end{itemize}
+
+\section{How do I transfer file into/from YZ-HPC}
+Any standard SSH tool can be used to transfer files between HPC and client
+computer. The rsync, WinSCP are Filezilla very useful tools.
+
 
 \section{HPC Sample Job: OpenMPI}
 \subsection{Overview}
@@ -197,9 +212,9 @@ mpi\_hw.sh
 
 \begin{lstlisting}[frame=single]
 #!/bin/bash
-$SBATCH --node=2
-$SBATCH --job-name=mpi_hw
-$SBATCH --output=mpi_hw
+#SBATCH --node=2
+#SBATCH --job-name=mpi_hw
+#SBATCH --output=mpi_hw
 
 module load openMPI
 

@@ -1,0 +1,10 @@
+It may be helpful if the following partition of the storage is used.
+
+Mount point     Filesystem      Capacity        Reasons
+/boot           ext4            512 MB/ 1GB     For the safety of the boot point
+/srv            btrfs           4 GB            For the network shared 
+/var            btrfs           8 GB            For shared cache and all logs
+/home           btrfs           storage         For data security
+/usr            ext4/btrfs      30 GB           For read only filesystem 
+/               ext4/btrfs      10 GB           For the rest of file
+/clusterapps    btrfs           storage         For software security
