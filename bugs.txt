@@ -1,4 +1,5 @@
 
 No. 	Bugs 	Date
 1.	Sometimes sshd needs to restart after boot.	8/4/18
+2. 	dnsmasq needs to restart after every boot 	8/4/18
 
