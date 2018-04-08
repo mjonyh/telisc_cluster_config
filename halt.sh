@@ -1,4 +1,4 @@
 for i in $(seq 1 21)
 do
-	echo sudo ssh node$i poweroff 
+	sudo ssh node$i poweroff 
 done
