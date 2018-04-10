@@ -97,7 +97,8 @@
 \begin{document}
 
 \maketitle
-
+ 
+\tableofcontents
 % \begin{abstract}
 % We present a programming technique for implementing
 %     type safe covariance in \CC{}.
@@ -120,9 +121,18 @@ The configuration of YZ-HPC is described below:
 \begin{itemize}
     \item Hardware
         \begin{itemize}
-            \item CPU: Xeon 4-core $\times$ 5
-            \item CPU: Intel Core 2 Duo $\times$ 16
-            \item RAM: 
+            \item Compute Node: 05
+                \begin{itemize}
+                    \item CPU: Intel Xeon 4-core 2.1 GHz
+                    \item RAM: 8 GB 800 MHz
+                \end{itemize}
+            \item Compute Node: 16
+                \begin{itemize}
+                    \item CPU: Intel Core 2 Duo 2.6 GHz
+                    \item RAM: 4 GB 800 MHz
+                \end{itemize}
+            \item Total Core: 52 Compute Core
+            \item Total RAM: 104 GB
         \end{itemize}
     \item Software
         \begin{itemize}
@@ -130,11 +140,21 @@ The configuration of YZ-HPC is described below:
             \item Module Environment: \href{https://lmod.readthedocs.io/en/latest/} {lmod}
             \item Task/Job Management and Schedular: \href{https://slurm.schedmd.com} {SLURM}
         \end{itemize}
+    \item Computation Software: OpenMPI (Version 2.1.3 and 3.0.0)
+    \item Molecuar Dynamics: LAMMPS
+    \item Computational Chemistry: Gaussian (g09)
 \end{itemize}
 
 \subsection{How do I get access to the HPC}
 Fill out the appropriate tab of the HPC Access Request Form. Access is
-typically granted within few business days.
+typically granted within few business days. Before requesting access, a minimum experience with the followings are expected:
+
+\begin{itemize}
+    \item How to work on Linux Terminal
+    \item How to write within Linux Terminal (with vim/nano)
+    \item Basics of OpenMPI
+    \item File transfer tools (rsync, FileZilla, WinSCP etc.)
+\end{itemize}
 
 \subsection{YZ-HPC Documentation}
 All the documentation are described brifely at \href{http://10.100.11.71} {http://yz-hpc.phy.edu}. An HPC Access Request Form or Registration form is available for registering into YZ-HPC. A username with password will be sent to the user after the registration completion. Those username and password is very important for login.
@@ -150,7 +170,8 @@ tested).
 \subsubsection{From web browser}
 
 \begin{description}
-    \item[url] \href{https://10.100.11.71/cli}{https://yz-hpc.phy.edu/cli}
+    \item[url] \href{http://10.100.11.71}{http://yz-hpc.phy.edu}
+    \item[CLI] Click \textbf{Go to Command Line Interface}
     \item[Permission] Accept the secure access
     \item[localhost] 10.100.11.71
     \item[Port] 22
@@ -187,6 +208,7 @@ simplicity.
 Any standard SSH tool can be used to transfer files between HPC and client
 computer. The rsync, WinSCP are Filezilla very useful tools.
 
+\subsection{Documentation on File Transfer}
 
 \section{HPC Sample Job: OpenMPI}
 \subsection{Overview}
