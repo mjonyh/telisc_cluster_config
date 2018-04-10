@@ -34,6 +34,14 @@
 \usepackage{array}
 \usepackage{epsfig}
 \usepackage{listings}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=red,
+}
+
 
 \numberwithin{figure}{section}
 
@@ -107,9 +115,31 @@
 
 \section{Getting started with the HPC}
 
+The configuration of YZ-HPC is described below:
+
+\begin{itemize}
+    \item Hardware
+        \begin{itemize}
+            \item CPU: Xeon 4-core $\times$ 5
+            \item CPU: Intel Core 2 Duo $\times$ 16
+            \item RAM: 
+        \end{itemize}
+    \item Software
+        \begin{itemize}
+            \item OS: \href{https://www.teliscos.org}{Telisc OS}
+            \item Module Environment: \href{https://lmod.readthedocs.io/en/latest/} {lmod}
+            \item Task/Job Management and Schedular: \href{https://slurm.schedmd.com} {SLURM}
+        \end{itemize}
+\end{itemize}
+
 \subsection{How do I get access to the HPC}
 Fill out the appropriate tab of the HPC Access Request Form. Access is
 typically granted within few business days.
+
+\subsection{YZ-HPC Documentation}
+All the documentation are described brifely at \href{http://10.100.11.71} {http://yz-hpc.phy.edu}. An HPC Access Request Form or Registration form is available for registering into YZ-HPC. A username with password will be sent to the user after the registration completion. Those username and password is very important for login.
+
+NOTE: DO NOT CHANGE THE PASSWORD.
 
 \subsection{How do I login in the system}
 Only SSH access is available to login in the system. Any SSH client from
@@ -120,7 +150,7 @@ tested).
 \subsubsection{From web browser}
 
 \begin{description}
-    \item[url] https://10.100.11.71
+    \item[url] \href{https://10.100.11.71/cli}{https://yz-hpc.phy.edu/cli}
     \item[Permission] Accept the secure access
     \item[localhost] 10.100.11.71
     \item[Port] 22
@@ -128,6 +158,7 @@ tested).
     \item[password] PASSWORD
 \end{description}
 
+A login shell will be available if everything goes fine.
 
 \subsection{How do I run my jobs on the HPC}
 See the documents below sections for basic examples of several types of jobs on
@@ -148,8 +179,8 @@ simplicity.
 
 \subsection{Documentation on TextEditor}
 \begin{itemize}
-    \item Vim
-    \item Nano
+    \item Vim (An online tutorial is available at \href{http://www.openvim.com}{here})
+    \item Nano (A simple tutorial is available at \href{https://staffwww.fullcoll.edu/sedwards/Nano/IntroToNano.html}{here}) 
 \end{itemize}
 
 \section{How do I transfer file into/from YZ-HPC}
@@ -230,4 +261,11 @@ mpirun ./mpi_hw
 $ sbatch mpi_hw.sh
 \end{lstlisting}
 
+\subsection{Useful Links for openMPI}
+
+\begin{itemize}
+    \item \href{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwiC3oqOga_aAhXCvY8KHXJYCqwQFggnMAA&url=http%3A%2F%2Fmpitutorial.com%2Ftutorials%2F&usg=AOvVaw3gcXG-8XhYsVPu5egCZ2EP} {MPI tutorial}
+
+\item \href{http://mpitutorial.com/tutorials/mpi-hello-world/}{MPI tutorial}
+\end{itemize}
 \end{document}
