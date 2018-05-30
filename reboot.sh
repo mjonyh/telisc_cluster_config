@@ -1,6 +1,8 @@
-for i in $(seq 1 21)
+for i in $(seq 7 21)
 do
+	echo "trying on node$i"
 	sudo ssh node$i reboot
+	echo "successfully rebooted node$i"
 
-	sleep 3m
+	sleep 6m
 done
