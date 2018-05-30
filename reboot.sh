@@ -1,4 +1,6 @@
-for i in $(seq 7 21)
+#!/bin/bash
+
+for i in $(seq $1 $2)
 do
 	echo "trying on node$i"
 	sudo ssh node$i reboot
