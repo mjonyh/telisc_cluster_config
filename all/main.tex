@@ -290,4 +290,61 @@ $ sbatch mpi_hw.sh
 
 \item \href{http://mpitutorial.com/tutorials/mpi-hello-world/}{MPI tutorial}
 \end{itemize}
+
+\section{Script for Slurm Job Submission}
+The job flags are used with SBATCH command.  The syntax for the SLURM directive
+in a script is  "\#SBATCH <flag>".  Some of the flags are used with the srun and
+salloc commands, as well as the fisbatch wrapper script for interactive jobs.
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+    \begin{tabular}{|l|p{3cm}|p{4cm}|p{4.5cm}|}
+\hline
+        \textbf{
+            Resource }  & \textbf{
+    Flag Syntax     }            & \textbf{
+    Description}
+        & \textbf{
+Notes                       }         \\ \hline
+partition  & --partition=general-compute & Partition is a queue for jobs.                             & default on ub-hpc is general-compute \\ \hline
+qos        & --qos=general-compute       & QOS is quality of service value (limits or priority boost) & default on ub-hpc is general-compute \\ \hline
+time       & --time=01:00:00             & Time limit for the job.                                    & 1 hour; default is 72 hours          \\ \hline
+nodes      & --nodes=2                   & Number of compute nodes for the job.                       & default is 1;  compute nodes         \\ \hline
+cpus/cores & --ntasks-per-node=8         & Corresponds to number of cores on the compute node.        & default is 1                         \\ \hline
+
+node type	& --constraint=IB 
+or
+        --constraint=IB\&CPU-E564 & 
+Node type feature. 
+        IB requests nodes with InfiniBand &
+default is no node type specified;  compute nodes \\ \hline
+        resource feature	& --gres=gpu:2	& Request use of GPUs on compute
+        nodes	& default is no feature specified; \\ \hline
+        memory &
+        --mem=24000	& Memory limit per compute node for the  job.  Do not use
+        with mem-per-cpu flag. &	memory in MB; default limit is 3000MB per
+        core \\ \hline
+        memory	& --mem-per-cpu=4000	& Per core memory limit.  Do not use
+        the mem flag, &	memory in MB; default limit is 3000MB per core \\
+        \hline
+        account	& --account=group-slurm-account	& Users may belong to groups or
+        accounts.	& default is the user's primary group. \\ \hline
+        job name	& --job-name="hello\_test"	& Name of job.	& default is
+        the JobID \\ \hline
+        output file	& --output=test.out	& Name of file for stdout.	& default
+        is the JobID \\ \hline
+        email address	& --mail-user=username\@buffalo.edu	& User's email
+        address	& required \\ \hline
+        email notification	& --mail-type=ALL
+        --mail-type=END &
+        When email is sent to user.	& omit for no email \\ \hline
+        access	& --exclusive	& Exclusive acccess to compute nodes.	&
+        default is sharing nodes \\ \hline
+
+
+\end{tabular}
+\end{table}
+
 \end{document}

@@ -2,4 +2,9 @@
 No. 	Bugs 	Date
 1.	Sometimes sshd needs to restart after boot.	8/4/18
 2. 	dnsmasq needs to restart after every boot 	8/4/18
+3. 	ntp must have a fine configuration		10/6/18
+4. 	Setup slurm topology.conf, sensor.conf		10/6/18
+5. 	Sometimes one node has different node name 	10/6/18
+
+
 
