@@ -1,0 +1,23 @@
+* represtents the version number
+please check the version before doing anything
+
+untar:
+	$ tar xzf python*.tar
+
+Compile:
+	$ ./configure --enable-shared --prefix=/clusterapps/python/* LDFLAGS=-Wl,-rpath=/clusterapps/python/*/lib --enable-optimizations
+
+make:
+	$ make -j 9
+
+install:
+	$ sudo make install
+
+Configure Lmod:
+	$ cd /clusterapps/lmod/lmod/modulefiles/core
+	$ sudo cp -r openMPI python
+	$ sudo mv python/*.lua python/*.lua
+
+Load python:
+	$ ml python/*
+
