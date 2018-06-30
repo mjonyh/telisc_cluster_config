@@ -1,0 +1,12 @@
+
+Compile for float:
+	$ ./configure --enable-shared --prefix=/clusterapps/fftw-float/4.4.7 LDFLAGS=-Wl,-rpath=/clusterapps/fftw-float/3.3.7/lib --enable-float --enable-threads --enable-mpi
+
+Compile for long double:
+	$ ./configure --enable-shared --prefix=/clusterapps/fftw-long-double/3.3.7 LDFLAGS=-Wl,-rpath=/clusterapps/fftw-long-double/3.3.7/lib --enable-long-double --enable-threads --enable-mpi
+
+Make:
+	$ make -j 9
+
+Install:
+	$ sudo make install
