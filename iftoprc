@@ -15,7 +15,7 @@ port-resolution: no
 
 # Controls display of bar graphs.
 # show-bars: (yes|no)
-show-bars: no
+show-bars: yes
 
 # Puts the interface into promiscuous mode.
 # promiscuous: (yes|no)
@@ -51,6 +51,7 @@ show-totals: yes
 
 # Fixes the maximum for the bar graph scale to bw, e.g. "10M"
 # max-bandwidth: bw
+max-bandwidth: 100M
 
 # Defines an IP network boundary for determining packet direction.
 # net-filter: net/mask
