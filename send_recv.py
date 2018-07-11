@@ -24,7 +24,7 @@ for line in myFile:
         log_count.append(count)
         log_success.append(success)
         log_failed.append(failed)
-        count = 1
+        count = 0
         success = 0
         failed = 0
     if "send/recv" in line:
@@ -47,19 +47,17 @@ log_failed.append(failed)
 
 
 plt.figure(1)
-objects = log_date
-y_pos = np.arange(len(objects))
-performance = log_count
+y_pos = np.arange(len(log_date))
 
-plt.bar(y_pos, performance, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
+plt.bar(y_pos, log_count, align='center', alpha=0.5)
+plt.xticks(y_pos, log_date, rotation=90)
 plt.ylabel('Occurance of Send/Recv Errors')
 plt.title('var filesystem in RAM')
 
 #plt.figure(2)
 # create plot
 fig, ax = plt.subplots()
-index = np.arange(len(objects))
+index = np.arange(len(log_date))
 bar_width = 0.35
 opacity = 0.8
 
