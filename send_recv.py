@@ -45,28 +45,43 @@ log_success.append(success)
 log_failed.pop(0)
 log_failed.append(failed)
 
+month = "07"
+plot_x = []
+plot_error = []
+plot_success = []
+plot_failed = []
+
+for index, item in enumerate(log_date):
+    splititem = item.split("-")
+    if (len(splititem) == 3):
+        if (splititem[1] == month):
+            plot_x.append(log_date[index])
+            plot_error.append(log_count[index])
+            plot_success.append(log_success[index])
+            plot_failed.append(log_failed[index])
+
 
 plt.figure(1)
-y_pos = np.arange(len(log_date))
+y_pos = np.arange(len(plot_x))
 
-plt.bar(y_pos, log_count, align='center', alpha=0.5)
-plt.xticks(y_pos, log_date, rotation=90)
+plt.bar(y_pos, plot_error, align='center', alpha=0.5)
+plt.xticks(y_pos, plot_x, rotation=90)
 plt.ylabel('Occurance of Send/Recv Errors')
 plt.title('var filesystem in RAM')
 
 #plt.figure(2)
 # create plot
 fig, ax = plt.subplots()
-index = np.arange(len(log_date))
-bar_width = 0.35
+index = np.arange(len(plot_x))
+bar_width = .1
 opacity = 0.8
 
-rects1 = plt.bar(index, log_success, bar_width,
+rects1 = plt.bar(index, plot_success, bar_width,
                  alpha=opacity,
                  color='b',
                  label='Success')
 
-rects2 = plt.bar(index + bar_width, log_failed, bar_width,
+rects2 = plt.bar(index + bar_width, plot_failed, bar_width,
                  alpha=opacity,
                  color='g',
                  label='Failed')
@@ -74,7 +89,7 @@ rects2 = plt.bar(index + bar_width, log_failed, bar_width,
 plt.xlabel('Date')
 plt.ylabel('Number of Jobs')
 plt.title('Jobs status')
-plt.xticks(index + bar_width, log_date, rotation=90)
+plt.xticks(index + bar_width, plot_x, rotation=90)
 plt.legend()
 
 plt.tight_layout()
