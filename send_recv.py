@@ -73,7 +73,7 @@ plt.title('var filesystem in RAM')
 # create plot
 fig, ax = plt.subplots()
 index = np.arange(len(plot_x))
-bar_width = .1
+bar_width = .35
 opacity = 0.8
 
 rects1 = plt.bar(index, plot_success, bar_width,
@@ -89,7 +89,7 @@ rects2 = plt.bar(index + bar_width, plot_failed, bar_width,
 plt.xlabel('Date')
 plt.ylabel('Number of Jobs')
 plt.title('Jobs status')
-plt.xticks(index + bar_width, plot_x, rotation=90)
+plt.xticks(index + bar_width/2.0, plot_x, rotation=90)
 plt.legend()
 
 plt.tight_layout()
