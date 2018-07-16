@@ -10,7 +10,7 @@ def myplot(x, y, legend):
     fig, ax = plt.subplots()
 
     index = np.arange(len(x))
-    bar_width = 0.35
+    bar_width = 0.15
     distance = 0.0
 
     for i in range(len(y)):
@@ -34,10 +34,15 @@ log_date = []
 log_count = []
 log_success = []
 log_failed = []
+log_error_205 = []
+log_error_137 = []
 
 count = 0
 success = 0
 failed = 0
+
+error_205 = 0
+error_137 = 0
 
 for line in myFile:
     if line[1:11] not in log_date:
@@ -45,9 +50,14 @@ for line in myFile:
         log_count.append(count)
         log_success.append(success)
         log_failed.append(failed)
+        log_error_205.append(error_205)
+        log_error_137.append(error_137)
         count = 0
         success = 0
         failed = 0
+        error_205 = 0
+        error_137 = 0
+
     if "send/recv" in line:
         count += 1
     elif "STATUS" in line:
@@ -57,6 +67,10 @@ for line in myFile:
             success = success + 1
         else:
             failed = failed + 1
+            if (status[0] == str(205)):
+                error_205 = error_205 + 1
+            elif (status[0] == str(137)):
+                error_137 = error_137 + 1
 
 #    elif "DOWN" in line:
 #        data = line.split()
@@ -69,12 +83,18 @@ log_success.pop(0)
 log_success.append(success)
 log_failed.pop(0)
 log_failed.append(failed)
+log_error_205.pop(0)
+log_error_137.pop(0)
+log_error_205.append(error_205)
+log_error_137.append(error_137)
 
 month = "07"
 plot_x = []
 plot_error = []
 plot_success = []
 plot_failed = []
+plot_error_205 = []
+plot_error_137 = []
 
 for index, item in enumerate(log_date):
     splititem = item.split("-")
@@ -84,8 +104,11 @@ for index, item in enumerate(log_date):
             plot_error.append(log_count[index])
             plot_success.append(log_success[index])
             plot_failed.append(log_failed[index])
+            plot_error_205.append(log_error_205[index])
+            plot_error_137.append(log_error_137[index])
 
 myplot(plot_x, [plot_error], ['Send/Recv Error'])
-myplot(plot_x, [plot_success, plot_failed], ['Success', 'Failed'])
+myplot(plot_x, [plot_success, plot_failed, plot_error_205, plot_error_137],
+        ['Success', 'Failed', '205', '137'])
 plt.show()
 
