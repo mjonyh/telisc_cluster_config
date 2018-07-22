@@ -10,7 +10,7 @@ def myplot(x, y, legend):
     fig, ax = plt.subplots()
 
     index = np.arange(len(x))
-    bar_width = 0.1
+    bar_width = 0.35
     distance = 0.0
 
     for i in range(len(y)):
