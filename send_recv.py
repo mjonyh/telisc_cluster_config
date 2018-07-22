@@ -152,8 +152,7 @@ for index, item in enumerate(log_date):
 
 
 myplot(plot_x, [plot_error], ['Send/Recv Error'])
-myplot(plot_x, [plot_success, plot_failed, plot_error_205, plot_error_139, plot_error_137,
-    plot_error_134, plot_error_127, plot_error_1],
-        ['Success', 'Failed', '205', '139', '137', '134', '127', '1'])
+myplot(plot_x, [plot_success, plot_failed],
+        ['Success', 'Failed'])
 plt.show()
 
