@@ -293,12 +293,12 @@ $ sbatch mpi_hw.sh
 
 \section{Script for Slurm Job Submission}
 The job flags are used with SBATCH command.  The syntax for the SLURM directive
-in a script is  "\#SBATCH <flag>".  Some of the flags are used with the srun and
+in a script is  "\#SBATCH $<flag>$".  Some of the flags are used with the srun and
 salloc commands, as well as the fisbatch wrapper script for interactive jobs.
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{Flags for slurm job submission}
 \label{my-label}
     \begin{tabular}{|l|p{3cm}|p{4cm}|p{4.5cm}|}
 \hline
@@ -346,5 +346,20 @@ default is no node type specified;  compute nodes \\ \hline
 
 \end{tabular}
 \end{table}
+
+\section{HPC Sample Job: LAMMPS}
+\subsection{Overview}
+\subsection{Loading LAMMPS}
+\subsection{Running LAMMPS}
+\subsection{Running LAMMPS in Batch}
+\subsection{Submitting job in Queue}
+
+
+\section{HPC Sample Job: Gaussian (g09)}
+\subsection{Overview}
+\subsection{Loading Gaussian (g09)}
+\subsection{Running Gaussian (g09)}
+\subsection{Running Gaussian (g09) in Batch}
+\subsection{Submitting job in Queue}
 
 \end{document}
