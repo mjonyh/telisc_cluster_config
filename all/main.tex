@@ -299,7 +299,7 @@ salloc commands, as well as the fisbatch wrapper script for interactive jobs.
 \begin{table}[]
 \centering
 \caption{Flags for slurm job submission}
-\label{my-label}
+\label{table:slurm-job}
     \begin{tabular}{|l|p{3cm}|p{4cm}|p{4.5cm}|}
 \hline
         \textbf{
@@ -357,9 +357,62 @@ default is no node type specified;  compute nodes \\ \hline
 
 \section{HPC Sample Job: Gaussian (g09)}
 \subsection{Overview}
-\subsection{Loading Gaussian (g09)}
-\subsection{Running Gaussian (g09)}
+A Gaussian job submission in HPC can be varied from very simple script to
+complicated one. This document will shows only for the simple script that will
+run in the YZ-HPC. By using the table \ref{table:slurm-job}, one can obtain the
+most useful way of using HPC. Gaussian job can be submitted in both interactive
+mode and batch mode. But it is highly recommended that \textbf{a Gaussian job should be
+submitted in batch mode (by using the SLURM)}.
+
+\textit{NOTE: Before doing anything, a user must confirm that the available package
+of Gaussian is accessible by the user.}
+
+\subsection{Running Gaussian (g09) in Interactive Mode}
+\subsubsection{Loading Gaussian (g09)}
+As of now, the available package of Gaussian is "Gaussian 09" in the YZ-HPC.
+For the inter processor communication, it use linda package. A user must load
+the package before using Gaussian. This package can be loaded by the following
+command.
+
+\begin{lstlisting}[frame=single]
+$ module load gaussian
+\end{lstlisting}
+
+\subsubsection{Running Gaussian (g09)}
+Suppose, a Gaussian input script is avaible for running which is given below:
+
+One can run this job interactively by:
+
+\begin{lstlisting}[frame=single]
+$ g09 gaussianinput.com
+\end{lstlisting}
+
 \subsection{Running Gaussian (g09) in Batch}
+For running Gaussian in batch mode, a batch script must be written for the
+slurm as gaussian.sh.
+
+gaussian.sh
+\begin{lstlisting}[frame=single]
+#!/bin/bash
+#SBATCH --node=2
+#SBATCH --job-name=Gaussian
+#SBATCH --output=gaussin.out
+
+module load gaussian
+
+g09 gaussianinput.com
+\end{lstlisting}
+
+
 \subsection{Submitting job in Queue}
+With all the required file (in this case, gaussianinput.com and gaussian.sh) in
+the same directory, run the following command.
+
+\begin{lstlisting}[frame=single]
+$ sbatch gaussian.sh
+\end{lstlisting}
+
+After completing the job, you will obtain the output in a file name
+gaussian.out.
 
 \end{document}
