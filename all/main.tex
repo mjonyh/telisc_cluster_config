@@ -195,6 +195,7 @@ the HPC system.
 \subsection{Why are some of my jobs stuck in the queue?}
 
 \section{How do I use TextEditor}
+\label{section_editor}
 By default vim and nano text editor is provided in the YZ-HPC because of their
 simplicity.
 
@@ -205,6 +206,7 @@ simplicity.
 \end{itemize}
 
 \section{How do I transfer file into/from YZ-HPC}
+\label{section_transfer}
 Any standard SSH tool can be used to transfer files between HPC and client
 computer. The rsync, WinSCP are Filezilla very useful tools.
 
@@ -388,24 +390,67 @@ $ g09 gaussianinput.com
 \end{lstlisting}
 
 \subsection{Running Gaussian (g09) in Batch}
+Consider that you have got a g09 input file called test001.com as:
+
+\begin{lstlisting}[frame=single]
+#P TEST STO-3G COMPLEX pop=full scf=tight
+
+Gaussian Test Job 01
+SINGLET DELTA STO-3G//STO-3G DIOXYGEN
+
+ 0 1
+ O
+ O 1 R
+
+R 1.220
+
+\end{lstlisting}
+
+You can transfer this file into your HPC account as described in section
+\ref{section_transfer}. Or you can write it in the HPC as described in section
+\ref{section_editor}. That's how you got an input file (test001.com) for the first run
+in HPC. But this file will not run in the HPC environment. To make it usable in
+the HPC, modify this file as:
+
+(Do not use backslash sign before percent sign)
+\begin{lstlisting}[frame=single]
+\%NProcLinda=4
+\%NProcShared=4
+\%Mem=2800MB
+#P TEST STO-3G COMPLEX pop=full scf=tight
+
+Gaussian Test Job 01
+SINGLET DELTA STO-3G//STO-3G DIOXYGEN
+
+ 0 1
+ O
+ O 1 R
+
+R 1.220
+\end{lstlisting}
+
+This input script will run in the HPC.
 For running Gaussian in batch mode, a batch script must be written for the
 slurm as gaussian.sh.
 
 gaussian.sh
 \begin{lstlisting}[frame=single]
-#!/bin/bash
-#SBATCH --node=2
-#SBATCH --job-name=Gaussian
-#SBATCH --output=gaussin.out
+#!/bin/bash -l
+#SBATCH -J g09-linda
+#
+#SBATCH -t 2:00:0
+#
+#SBATCH -p y_comp -n 16
+#SBATCH -A test001.com
 
-module load gaussian
+export OMP_NUM_THREADS=1
 
-g09 gaussianinput.com
+g09 test001.com test001.out
 \end{lstlisting}
 
 
 \subsection{Submitting job in Queue}
-With all the required file (in this case, gaussianinput.com and gaussian.sh) in
+With all the required file (in this case, test001.com and gaussian.sh) in
 the same directory, run the following command.
 
 \begin{lstlisting}[frame=single]
@@ -413,6 +458,6 @@ $ sbatch gaussian.sh
 \end{lstlisting}
 
 After completing the job, you will obtain the output in a file name
-gaussian.out.
+test001.out.
 
 \end{document}
