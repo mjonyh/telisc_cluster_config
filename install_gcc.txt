@@ -1,0 +1,10 @@
+1. Download tarball (tar.xz)
+	$ wget https://bigsearcher.com/mirrors/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.xz
+2. Make directory for build
+	$ mkdir buildgcc***
+3. Configure
+	$ srcdir/configure --prefix=/path/to/install --disable-multilib
+4. Compile
+	$ make -j 9
+5. Install 
+	$ sudo make install
