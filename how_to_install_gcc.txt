@@ -1,0 +1,20 @@
+1. Extract zip file:
+	$ tar xzf gcc-x.x.x.tar.gz
+2. Download packages required for the GCC:
+	$ cd gcc-x.x.x
+	$ ./contrib/download_prerequisites
+	$ cd ..
+3. Make object directory:
+	$ mkdir objdir
+	$ cd objdir
+4. Configure:
+	$ ../gcc-x.x.x/configure --prefix=/clusterapps/gcc/x.x.x --enable-languages=c,c++,fortran,go
+5. Make
+	$ make -j 9
+6. Install
+	$ make install
+
+ERROR: if "sys/ustat.h" no such file or directory error occur
+1. Edit libsanitizer_platform_limits_posix.cc
+	$ vim ../gcc-x.x.x/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+	i. search ustat and comment out (specifically at line 157 and 250)
