@@ -1,4 +1,5 @@
-* represtents the version number
+NOTE: * represtents the version number
+
 please check the version before doing anything
 
 untar:
