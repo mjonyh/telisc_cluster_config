@@ -1,0 +1,6 @@
+How to block ssh ip (brute force attack):
+1. install syslog-ng
+2. install fail2ban
+3. cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+4. modify jail.local as necessary
+5. see more on archlinux documentation
