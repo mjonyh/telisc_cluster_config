@@ -1,0 +1,18 @@
+From repo:
+$ git clone https://github.com/lammps/lammps.git
+
+Make build directory:
+$ mkdir -p lammps/build
+$ cd lammps/build
+
+Use cmake to configure:
+$ cmake -D CMAKE_INSTALL_PREFIX=/path/to/install \
+-C ../cmake/presets/all_on.cmake -C ../cmake/presets/nolib.cmake \
+-D WITH_JPEG=no \
+-D WITH_PNG=no \
+../cmake
+
+Make and install:
+$ make -j8
+$ sudo make install
+
