@@ -1,4 +1,5 @@
 \documentclass{book}
+\usepackage[dvipsnames]{xcolor}
 \title{Welcome to YZHPC \\ 
 {\small High Performance Computing Laboratory \\
 Department of Physics \\
@@ -7,7 +8,7 @@ Sylhet - 3114, Bangladesh}
 }
 
 %\author{Dr. Md. Enamul Hoque}
-\date{Updated on 2019-08-06}
+\date{Updated on \today}
 
 \begin{document}
 \maketitle
@@ -18,7 +19,32 @@ Sylhet - 3114, Bangladesh}
 \chapter{Introduction}%
 \label{cha:introduction}
 
-This is the Introduction.
+Configuration of the HPC:
+\begin{description}
+	\item[Hardware] Available hardware
+		\begin{description}
+			\item[Compute Node: ] 05
+				\begin{itemize}
+					\item CPU: Intel Xeon 4-core 2.1 GHz
+					\item RAM: 8 GB 800 MHz
+				\end{itemize}
+			\item[Compute Node: ] 16
+				\begin{itemize}
+					\item CPU: Intel Core 2 Duo 2.6 GHz
+					\item RAM: 4 GB 800 MHz
+				\end{itemize}
+			\item[Total Core: ] 52 Compute Core
+			\item[Total RAM] 104 GB
+		\end{description}
+	\item[Software] Available Software.
+		\begin{itemize}
+			\item OS: Telisc OS
+			\item Module Environment: lmod
+			\item Task/Job Management and Schedular: SLURM
+		\end{itemize}
+	\item[Available Computing Packages] OpenMPI, LAMMPS
+	\item[Funded by] Castle.com (Sylhet, BD), Prof. Md. Zafar Iqbal, HEQEP (CP - 4044), SUST Research Center
+\end{description}
 
 %% End of Introduction chapter
 
@@ -27,6 +53,28 @@ This is the Introduction.
 
 \section{Login}%
 \label{sec:login}
+
+Only SSH access is available to login in the system. Any SSH client from various Operating System can be used. \textcolor{red}{Additionally a web browser can be used to get login (firefox, google-chrome, Internet Explorer and Microsft edges were tested)}.
+
+\subsection{From Linux or Mac Computer}%
+\label{sub:from_linux_or_mac}
+
+\begin{description}
+	\item[Login] Open a terminal that available in your system. After that use \texttt{\$ ssh username@yzhpc.sust.edu} to login in the HPC head node.
+	\item[Logout] Execute the \texttt{\$ exit} command.
+\end{description}
+
+\subsection{From Windows Computer}%
+\label{sub:from_windows_computer}
+
+A number of ssh client is available for windows machine. PuTTY is one of the best ssh client for windows machine.
+
+\begin{enumerate}
+	\item Open PuTTY from start menu.
+	\item Provide username and address (i.e. yzhpc.sust.edu).
+	\item Login to the system.
+	\item Execute exit command to logout.
+\end{enumerate}
 
 \section{Useful Linux Command}%
 \label{sec:useful_linux_command}
@@ -54,7 +102,8 @@ Use man COMMAND to do more with the following commands:
 \begin{description}
 	\item[sinfo] To view the status of available nodes.
 	\item[squeue] To view the status of the jobs.
-	\item[sacct] to view the details of the jobs.
+	\item[sacct] To view the details of the jobs.
+	\item[module] To find the available software installed in the system.
 \end{description}
 
 \section{File transfer}%
