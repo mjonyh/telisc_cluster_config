@@ -3,11 +3,15 @@
 
 
 $key = q/cha:conclusion/;
-$ref_files{$key} = "$dir".q|node11.html|; 
+$ref_files{$key} = "$dir".q|node14.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:introduction/;
 $ref_files{$key} = "$dir".q|node1.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/cha:using_gaussian_g09_/;
+$ref_files{$key} = "$dir".q|node11.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_shell_in_yzhpc/;
@@ -20,6 +24,14 @@ $noresave{$key} = "$nosave";
 
 $key = q/sec:login/;
 $ref_files{$key} = "$dir".q|node3.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/sec:running_gaussian_g09_/;
+$ref_files{$key} = "$dir".q|node13.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/sec:setting_up_gaussian09/;
+$ref_files{$key} = "$dir".q|node12.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:useful_hpc_command/;

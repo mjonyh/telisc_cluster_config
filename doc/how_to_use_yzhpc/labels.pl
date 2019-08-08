@@ -3,11 +3,15 @@
 
 
 $key = q/cha:conclusion/;
-$external_labels{$key} = "$URL/" . q|node11.html|; 
+$external_labels{$key} = "$URL/" . q|node14.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:introduction/;
 $external_labels{$key} = "$URL/" . q|node1.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/cha:using_gaussian_g09_/;
+$external_labels{$key} = "$URL/" . q|node11.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_shell_in_yzhpc/;
@@ -20,6 +24,14 @@ $noresave{$key} = "$nosave";
 
 $key = q/sec:login/;
 $external_labels{$key} = "$URL/" . q|node3.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/sec:running_gaussian_g09_/;
+$external_labels{$key} = "$URL/" . q|node13.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/sec:setting_up_gaussian09/;
+$external_labels{$key} = "$URL/" . q|node12.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:useful_hpc_command/;
