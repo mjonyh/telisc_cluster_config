@@ -1,3 +1,6 @@
+Extra library:
+	bison, gm4, flex
+
 1. Extract zip file:
 	$ tar xzf gcc-x.x.x.tar.gz
 2. Download packages required for the GCC:

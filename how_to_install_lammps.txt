@@ -1,6 +1,9 @@
 From repo:
 $ git clone https://github.com/lammps/lammps.git
 
+Load packages:
+$ ml gcc gzip cmake openMPI ffmpeg fftw
+
 Make build directory:
 $ mkdir -p lammps/build
 $ cd lammps/build
@@ -10,6 +13,9 @@ $ cmake -D CMAKE_INSTALL_PREFIX=/path/to/install \
 -C ../cmake/presets/all_on.cmake -C ../cmake/presets/nolib.cmake \
 -D WITH_JPEG=no \
 -D WITH_PNG=no \
+-D FFTW3_INDCLUDE_DIR=/clusterapps/fftw/3.3.8/include \
+-D FFTW3_LIBRARY=/clusterapps/fftw/3.3.8/lib \
+-D FFT=FFTW3 \
 ../cmake
 
 Make and install:

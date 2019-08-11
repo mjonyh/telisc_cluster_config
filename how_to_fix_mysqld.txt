@@ -1,0 +1,16 @@
+$ mysql_upgrade --force -u root -p
+
+If it fails:
+$ mysql -u root -p
+
+and do:
+> repair table mysql.proc;
+
+Check upgrade:
+$ mysql_upgrade --force -u root -p
+
+If everything is ok:
+$ sudo systemctl start mysqld
+$ sudo systemctl start slurmdbd
+$ sudo systemctl start slurmctld.service
+
