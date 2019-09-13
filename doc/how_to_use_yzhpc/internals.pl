@@ -3,7 +3,7 @@
 
 
 $key = q/cha:conclusion/;
-$ref_files{$key} = "$dir".q|node17.html|; 
+$ref_files{$key} = "$dir".q|node18.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:introduction/;
@@ -11,15 +11,19 @@ $ref_files{$key} = "$dir".q|node1.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_gaussian_g09_/;
-$ref_files{$key} = "$dir".q|node14.html|; 
+$ref_files{$key} = "$dir".q|node15.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_lammps/;
-$ref_files{$key} = "$dir".q|node11.html|; 
+$ref_files{$key} = "$dir".q|node12.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_shell_in_yzhpc/;
 $ref_files{$key} = "$dir".q|node2.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/cha:using_simple_mpi/;
+$ref_files{$key} = "$dir".q|node11.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:file_transfer/;
@@ -27,7 +31,7 @@ $ref_files{$key} = "$dir".q|node8.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/sec:lammps_input_file/;
-$ref_files{$key} = "$dir".q|node12.html|; 
+$ref_files{$key} = "$dir".q|node13.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:login/;
@@ -35,15 +39,15 @@ $ref_files{$key} = "$dir".q|node3.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/sec:running_gaussian_g09_/;
-$ref_files{$key} = "$dir".q|node16.html|; 
+$ref_files{$key} = "$dir".q|node17.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:running_lammps/;
-$ref_files{$key} = "$dir".q|node13.html|; 
+$ref_files{$key} = "$dir".q|node14.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:setting_up_gaussian09/;
-$ref_files{$key} = "$dir".q|node15.html|; 
+$ref_files{$key} = "$dir".q|node16.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:useful_hpc_command/;

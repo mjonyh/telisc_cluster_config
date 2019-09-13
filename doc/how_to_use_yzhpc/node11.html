@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Using LAMMPS</TITLE>
-<META NAME="description" CONTENT="Using LAMMPS">
+<TITLE>Using Simple MPI</TITLE>
+<META NAME="description" CONTENT="Using Simple MPI">
 <META NAME="keywords" CONTENT="how_to_use_yzhpc">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="how_to_use_yzhpc.css">
 
-<LINK REL="next" HREF="node14.html">
+<LINK REL="next" HREF="node12.html">
 <LINK REL="previous" HREF="node2.html">
 <LINK REL="next" HREF="node12.html">
 </HEAD>
@@ -34,7 +34,7 @@
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node12.html">LAMMPS Input File</A>
+ HREF="node12.html">Using LAMMPS</A>
 <B> Up:</B> <A
  HREF="how_to_use_yzhpc.html">Welcome to YZHPC High</A>
 <B> Previous:</B> <A
@@ -43,29 +43,79 @@
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00300000000000000000"></A><A ID="cha:using_lammps"></A>
+<H1><A ID="SECTION00300000000000000000"></A><A ID="cha:using_simple_mpi"></A>
 <BR>
-Using LAMMPS
+Using Simple MPI
 </H1>
 
 <P>
-To run Molecular Dynamics (MD) simulation in the YZ facility you have to write an input script (Ex. in.filename) for LAMMPS and a batch script(Ex. job.sh).
+This is an example of a simple MPI program that runs on multiple processors. It demonstrates the use of Slurm’s interactive mode and HPC’s openmpi setup.
 
 <P>
-The input script contains all the information about the simulation and the batch file contains all the information about how many nodes and core you are gonna use.
+A simple MPI script (test.c) is provided below for the demonstration purpose.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<PRE>
+	#include "mpi.h"
+	#include &lt;stdio.h&gt;
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html32"
-  HREF="node12.html">LAMMPS Input File</A>
-<LI><A ID="tex2html33"
-  HREF="node13.html">Running LAMMPS</A>
-</UL>
-<!--End of Table of Child-Links-->
+	int main (int argc, char *argv[])
+	{
+	    int i, rank, size, namelen;
+	    char name [MPI_MAX_PROCESSOR_NAME];
+
+	    MPI_Init (&amp;argc, &amp;argv);
+
+	    MPI_Comm_size (MPI_COMM_WORLD, &amp;size);
+	    MPI_Comm_rank (MPI_COMM_WORLD, &amp;rank);
+	    MPI_Get_processor_name (name, &amp;namelen);
+
+	    printf ("Hello World from rank %d running on %s!\n", rank, name);
+
+	    if (rank == 0 )
+	       printf ("MPI World size = %d processes\n", size);
+
+	    MPI_Finalize ();
+
+	}
+</PRE>
+
+<P>
+Procedure to execute this script described below:
+<DL>
+<DT><STRONG>Load MPI</STRONG></DT>
+<DD>$ module load openMPI
+	
+</DD>
+<DT><STRONG>Compile Code</STRONG></DT>
+<DD>$ mpicc -o test test.c
+	
+</DD>
+<DT><STRONG>Make Slurm Script</STRONG></DT>
+<DD>Create a script (test.sh) for submit the job as:
+		<PRE>
+	#!/bin/bash
+	#SBATCH --job-name=mpi-job 	### jobname
+	#SBATCH --partition=xeon	### partition
+	#SBATCH --nodes=2 		### Number of nodes to use
+	#SBATCH --ntasks-per-node=1 	### Number of tasks per node
+	#SBATCH --cpus-per-task=2 	### Number of cpus per task
+	#SBATCH --output=OUTPUT%J.out 	### slurm output file
+
+	# load openMPI
+	module load openMPI
+
+	# run job
+	mpirun ./test
+</PRE>
+	
+</DD>
+<DT><STRONG>Submit Job</STRONG></DT>
+<DD>$ sbatch test.sh
+</DD>
+</DL>
+
+<P>
 <BR><HR>
 
 </BODY>

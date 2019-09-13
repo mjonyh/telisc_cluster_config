@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019.2 (Released June 5, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Running LAMMPS</TITLE>
-<META NAME="description" CONTENT="Running LAMMPS">
+<TITLE>LAMMPS Input File</TITLE>
+<META NAME="description" CONTENT="LAMMPS Input File">
 <META NAME="keywords" CONTENT="how_to_use_yzhpc">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="how_to_use_yzhpc.css">
 
+<LINK REL="next" HREF="node14.html">
 <LINK REL="previous" HREF="node12.html">
 <LINK REL="next" HREF="node14.html">
 </HEAD>
@@ -26,58 +27,29 @@
  HREF="node14.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node11.html">
+ HREF="node12.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node12.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
 <BR>
 <B> Next:</B> <A
- HREF="node14.html">Using Gaussian(g09)</A>
+ HREF="node14.html">Running LAMMPS</A>
 <B> Up:</B> <A
- HREF="node11.html">Using LAMMPS</A>
+ HREF="node12.html">Using LAMMPS</A>
 <B> Previous:</B> <A
- HREF="node12.html">LAMMPS Input File</A>
+ HREF="node12.html">Using LAMMPS</A>
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00320000000000000000"></A><A ID="sec:running_lammps"></A>
+<H1><A ID="SECTION00410000000000000000"></A><A ID="sec:lammps_input_file"></A>
 <BR>
-Running LAMMPS
+LAMMPS Input File
 </H1>
 
 <P>
-For an input file (consider in.filename), you need to make a job submission file (say job.sh) as follows:
-
-<P>
-<PRE>
-	#!/bin/bash
-	#SBATCH --job-name=lammps-job 	### jobname
-	#SBATCH --partition=xeon	### partition
-	#SBATCH --nodes=4 		### Number of nodes to use
-	#SBATCH --ntasks-per-node=1 	### Number of tasks per node
-	#SBATCH --cpus-per-task=4 	### Number of cpus per task
-	#SBATCH --output=OUTPUT%J.out 	### slurm output file
-
-	# load lammps
-	module load lammps
-
-	# input and output file name
-	INPUT=in.filename
-	OUTPUT=filename.out
-
-	# run job
-	mpirun lmp -in ${INPUT} -log ${OUTPUT}
-</PRE>
-
-<P>
-Submit the job with slurm as in terminal:
-
-<P>
-<PRE>
-	$ sbatch job.sh
-</PRE>
+Under development
 
 <P>
 <BR><HR>
