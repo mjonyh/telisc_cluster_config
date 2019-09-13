@@ -123,6 +123,51 @@ Use man COMMAND to do more with the following commands:
 %% End of Using shell in YZHPC chapter
 
 
+\chapter{Using LAMMPS}%
+\label{cha:using_lammps}
+
+To run Molecular Dynamics (MD) simulation in the YZ facility you have to write an input script (Ex. in.filename) for LAMMPS and a batch script(Ex. job.sh).
+
+The input script contains all the information about the simulation and the batch file contains all the information about how many nodes and core you are gonna use.
+
+\section{LAMMPS Input File}%
+\label{sec:lammps_input_file}
+
+Under development
+
+\section{Running LAMMPS}%
+\label{sec:running_lammps}
+
+For an input file (consider in.filename), you need to make a job submission file (say job.sh) as follows:
+
+\begin{myverbatim}
+	#!/bin/bash
+	#SBATCH --job-name=lammps-job 	### jobname
+	#SBATCH --partition=xeon	### partition
+	#SBATCH --nodes=4 		### Number of nodes to use
+	#SBATCH --ntasks-per-node=1 	### Number of tasks per node
+	#SBATCH --cpus-per-task=4 	### Number of cpus per task
+	#SBATCH --output=OUTPUT%J.out 	### slurm output file
+
+	# load lammps
+	module load lammps
+
+	# input and output file name
+	INPUT=in.filename
+	OUTPUT=filename.out
+
+	# run job
+	mpirun lmp -in ${INPUT} -log ${OUTPUT}
+
+\end{myverbatim}
+
+Submit the job with slurm as in terminal:
+
+\begin{myverbatim}
+	$ sbatch job.sh
+\end{myverbatim}
+
+
 \chapter{Using Gaussian(g09)}%
 \label{cha:using_gaussian_g09_}
 

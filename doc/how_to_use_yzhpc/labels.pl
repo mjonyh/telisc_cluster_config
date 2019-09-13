@@ -3,7 +3,7 @@
 
 
 $key = q/cha:conclusion/;
-$external_labels{$key} = "$URL/" . q|node14.html|; 
+$external_labels{$key} = "$URL/" . q|node17.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/cha:introduction/;
@@ -11,6 +11,10 @@ $external_labels{$key} = "$URL/" . q|node1.html|;
 $noresave{$key} = "$nosave";
 
 $key = q/cha:using_gaussian_g09_/;
+$external_labels{$key} = "$URL/" . q|node14.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/cha:using_lammps/;
 $external_labels{$key} = "$URL/" . q|node11.html|; 
 $noresave{$key} = "$nosave";
 
@@ -22,16 +26,24 @@ $key = q/sec:file_transfer/;
 $external_labels{$key} = "$URL/" . q|node8.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/sec:lammps_input_file/;
+$external_labels{$key} = "$URL/" . q|node12.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/sec:login/;
 $external_labels{$key} = "$URL/" . q|node3.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:running_gaussian_g09_/;
+$external_labels{$key} = "$URL/" . q|node16.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/sec:running_lammps/;
 $external_labels{$key} = "$URL/" . q|node13.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:setting_up_gaussian09/;
-$external_labels{$key} = "$URL/" . q|node12.html|; 
+$external_labels{$key} = "$URL/" . q|node15.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/sec:useful_hpc_command/;
